@@ -3,7 +3,7 @@ package com.example.yeongwha
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.yeongwha.movie_details.movie_details
+import com.example.yeongwha.movie_details.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn.setOnClickListener {
-            val intent = Intent(this, movie_details::class.java)
+            val intent = Intent(this, Movie::class.java)
             intent.putExtra("id",299534 )
             this.startActivity(intent)
         }

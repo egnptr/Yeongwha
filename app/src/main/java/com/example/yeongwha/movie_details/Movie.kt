@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_movie_details.*
 import java.text.NumberFormat
 import java.util.*
 
-class movie_details : AppCompatActivity() {
+class Movie : AppCompatActivity() {
 
     private lateinit var viewModel: ViewModel
     private lateinit var movieRepository: MovieDetailsRepository
@@ -46,7 +46,6 @@ class movie_details : AppCompatActivity() {
 
     fun bindUI( it: MovieDetails){
         movie_title.text = it.title
-        movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
         movie_rating.text = it.rating.toString()
         movie_runtime.text = it.runtime.toString() + " minutes"

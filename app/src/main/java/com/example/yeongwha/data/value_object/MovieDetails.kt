@@ -14,7 +14,6 @@ data class MovieDetails(
     val revenue: Long,
     val runtime: Int,
     val status: String,
-    val tagline: String,
     val title: String,
     val video: Boolean,
     @SerializedName("vote_average")
