@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Yeongwha</string>
+    <string name="runtime">Runtime:</string>
+    <string name="rating_value">rating</string>
+    <string name="rating">Rating:</string>
+    <string name="movie_title">Title</string>
+    <string name="movie_info">Movie Info</string>
+    <string name="release_date">Release Date:</string>
+    <string name="release_date_value">date</string>
+    <string name="budget">Budget:</string>
+    <string name="budget_value">budget</string>
+    <string name="revenue">Revenue:</string>
+    <string name="revenue_value">revenue</string>
+    <string name="overview">Overview</string>
+    <string name="overview_content">overview</string>
+    <string name="runtime_value">hour</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="image_splashscreen">image_splashscreen</string>
 </resources>
