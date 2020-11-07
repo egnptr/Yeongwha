@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Connection Error"
+            android:text="@string/connection_error"
             android:visibility="gone"/>
 
         <ScrollView
@@ -56,7 +56,7 @@
                         android:id="@+id/movie_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Title"
+                        android:text="@string/movie_title"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="18sp"/>
@@ -64,7 +64,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Movie Info"
+                        android:text="@string/movie_info"
                         android:layout_marginTop="15dp"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -79,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Release Date: "
+                            android:text="@string/release_date"
                             android:textSize="12sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -89,7 +89,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="date"
+                            android:text="@string/release_date_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -103,7 +103,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Rating: "
+                            android:text="@string/rating"
                             android:textSize="12sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
@@ -113,7 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="rating"
+                            android:text="@string/rating_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -127,7 +127,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Runtime: "
+                            android:text="@string/runtime"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
@@ -137,7 +137,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="hour"
+                            android:text="@string/runtime_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -151,7 +151,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Budget: "
+                            android:text="@string/budget"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
@@ -161,7 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="budget"
+                            android:text="@string/budget_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -175,7 +175,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Revenue: "
+                            android:text="@string/revenue"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
@@ -185,7 +185,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="revenue"
+                            android:text="@string/revenue_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -194,7 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Overview "
+                        android:text="@string/overview"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         android:textStyle="bold"/>
@@ -203,7 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="overview"
+                        android:text="@string/overview_content"
                         android:textColor="@color/white"
                         android:textSize="12sp"/>
                 </LinearLayout>
