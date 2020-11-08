@@ -9,6 +9,7 @@ enum class Status {
 class NetworkState (val status: Status, val msg: String) {
 
     companion object {
+        val ENDOFLIST: NetworkState
         val LOADED: NetworkState
         val LOADING: NetworkState
         val ERROR: NetworkState
@@ -17,6 +18,7 @@ class NetworkState (val status: Status, val msg: String) {
             LOADED = NetworkState(Status.SUCCESS, "Success")
             LOADING = NetworkState(Status.RUNNING, "Running")
             ERROR = NetworkState(Status.FAILED, "Something went wrong")
+            ENDOFLIST = NetworkState(Status.FAILED, "You have reach the end of the page")
         }
     }
 }

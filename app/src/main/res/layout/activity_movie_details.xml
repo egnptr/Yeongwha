@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".movie_details.Movie">
+    tools:context=".movie_details.MovieDetail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,6 +89,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
                             android:text="@string/release_date_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
@@ -113,6 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
+                            android:layout_marginLeft="10dp"
                             android:text="@string/rating_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
@@ -137,6 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
+                            android:layout_marginLeft="10dp"
                             android:text="@string/runtime_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
@@ -161,6 +164,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
+                            android:layout_marginLeft="10dp"
                             android:text="@string/budget_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>
@@ -185,6 +189,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
+                            android:layout_marginLeft="10dp"
                             android:text="@string/revenue_value"
                             android:textColor="@color/white"
                             android:textSize="12sp"/>

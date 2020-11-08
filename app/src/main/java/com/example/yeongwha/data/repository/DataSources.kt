@@ -8,7 +8,7 @@ import com.example.yeongwha.data.value_object.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class DataSource (private val apiService : TMDBInterface, private val compositeDisposable: CompositeDisposable) {
+class DataSources (private val apiService : TMDBInterface, private val compositeDisposable: CompositeDisposable) {
 
     private val _networkState  = MutableLiveData<NetworkState>()
     val networkState: LiveData<NetworkState>
