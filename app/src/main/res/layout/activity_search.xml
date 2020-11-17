@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".search.SearchActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorHelper"
+        android:transitionName="@string/transition_from_home_to_search">
+
+        <ImageButton
+            android:id="@+id/imageButtonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="@id/searchView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchView" />
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            style="@style/SearchViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/SearchViewTheme"
+            app:defaultQueryHint="Search movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageButtonBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:spanCount="3"
+            tools:itemCount="6"
+            tools:listitem="@layout/movie_list_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

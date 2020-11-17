@@ -1,5 +1,6 @@
 package com.example.yeongwha.popular_movie
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.yeongwha.R
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
 import com.example.yeongwha.data.repository.NetworkState
+import com.example.yeongwha.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             }
         };
 
-
         rv_movie_list.layoutManager = gridLayoutManager
         rv_movie_list.setHasFixedSize(true)
         rv_movie_list.adapter = movieAdapter
@@ -59,6 +60,12 @@ class MainActivity : AppCompatActivity() {
                 movieAdapter.setNetworkState(it)
             }
         })
+
+        imageButtonSearch.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 
