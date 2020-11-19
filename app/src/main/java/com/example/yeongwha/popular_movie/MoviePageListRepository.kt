@@ -1,6 +1,5 @@
 package com.example.yeongwha.popular_movie
 
-import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
@@ -19,7 +18,20 @@ class MoviePageListRepository (private val apiService: TMDBInterface) {
     lateinit var moviesDataSourceFactory: DataSourceFactory
 
     fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<Movie>> {
-        moviesDataSourceFactory = DataSourceFactory(apiService, compositeDisposable)
+        moviesDataSourceFactory = DataSourceFactory(apiService, null, compositeDisposable)
+
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPageSize(POST_PER_PAGE)
+            .build()
+
+        moviePagedList = LivePagedListBuilder(moviesDataSourceFactory, config).build()
+
+        return moviePagedList
+    }
+
+    fun getSearchMovie (compositeDisposable: CompositeDisposable, query : String?) : LiveData<PagedList<Movie>> {
+        moviesDataSourceFactory = DataSourceFactory(apiService, query, compositeDisposable)
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)

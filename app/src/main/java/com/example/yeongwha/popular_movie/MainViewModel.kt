@@ -7,9 +7,13 @@ import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.Movie
 import io.reactivex.disposables.CompositeDisposable
 
-class MainActivityViewModel(private val movieRepository : MoviePageListRepository) : ViewModel() {
+class MainActivityViewModel(private val movieRepository : MoviePageListRepository, private val query: String?) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
+
+    val  searchPagedList : LiveData<PagedList<Movie>> by lazy {
+        movieRepository.getSearchMovie(compositeDisposable, query)
+    }
 
     val  moviePagedList : LiveData<PagedList<Movie>> by lazy {
         movieRepository.fetchLiveMoviePagedList(compositeDisposable)

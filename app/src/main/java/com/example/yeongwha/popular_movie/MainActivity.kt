@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return MainActivityViewModel(movieRepository) as T
+                return MainActivityViewModel(movieRepository,null) as T
             }
         })[MainActivityViewModel::class.java]
     }

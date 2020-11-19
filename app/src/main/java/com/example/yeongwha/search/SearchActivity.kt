@@ -10,13 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.yeongwha.R
-import com.example.yeongwha.data.api.FIRST_PAGE
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
 import com.example.yeongwha.popular_movie.MainActivity
 import com.example.yeongwha.popular_movie.MainActivityViewModel
 import com.example.yeongwha.popular_movie.MoviePageListRepository
 import com.example.yeongwha.popular_movie.PageListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
@@ -33,10 +33,6 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
-        SearchMovie()
-    }
-
-    private fun SearchMovie() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
@@ -44,43 +40,45 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                ShowMovie(query)
+                showMovie(query)
                 return false
             }
 
         })
     }
 
-    private fun ShowMovie(query: String) {
+    private fun showMovie(query: String) {
+        val apiService : TMDBInterface = TMDBClient.getClient()
+        movieRepository = MoviePageListRepository(apiService)
+
+        viewModel = getViewModel(query)
+
         val movieAdapter = PageListAdapter(this)
+
         val gridLayoutManager = GridLayoutManager(this, 3)
-        viewModel = getViewModel()
 
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 val viewType = movieAdapter.getItemViewType(position)
-                if (viewType == movieAdapter.MOVIE_VIEW_TYPE) return  1
-                else return 3
+                if (viewType == movieAdapter.MOVIE_VIEW_TYPE) return  1    // Movie_VIEW_TYPE will occupy 1 out of 3 span
+                else return 3                                              // NETWORK_VIEW_TYPE will occupy all 3 span
             }
         };
 
-        rv_search.layoutManager = gridLayoutManager
-        rv_search.setHasFixedSize(true)
-        rv_search.adapter = movieAdapter
+        rv_movie_list.layoutManager = gridLayoutManager
+        rv_movie_list.setHasFixedSize(true)
+        rv_movie_list.adapter = movieAdapter
 
-        viewModel.moviePagedList.observe(this, Observer {
+        viewModel.searchPagedList.observe(this, Observer {
             movieAdapter.submitList(it)
         })
     }
 
-    private fun getViewModel(): MainActivityViewModel {
-        val apiService : TMDBInterface = TMDBClient.getClient()
-        movieRepository = MoviePageListRepository(apiService)
-
+    private fun getViewModel(query: String): MainActivityViewModel {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return MainActivityViewModel(movieRepository) as T
+                return MainActivityViewModel(movieRepository,query) as T
             }
         })[MainActivityViewModel::class.java]
     }

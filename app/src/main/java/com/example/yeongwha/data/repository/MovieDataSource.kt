@@ -9,7 +9,7 @@ import com.example.yeongwha.data.value_object.Movie
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MovieDataSource (private val apiService : TMDBInterface, private val compositeDisposable: CompositeDisposable)
+class MovieDataSource (private val apiService : TMDBInterface, private val query : String?, private val compositeDisposable: CompositeDisposable)
     : PageKeyedDataSource<Int, Movie>(){
 
     private var page = FIRST_PAGE
@@ -21,8 +21,10 @@ class MovieDataSource (private val apiService : TMDBInterface, private val compo
 
         networkState.postValue(NetworkState.LOADING)
 
+        val response = if(query!=null) apiService.searchMovie(query,page) else apiService.getPopularMovie(page)
+
         compositeDisposable.add(
-            apiService.getPopularMovie(page)
+            response
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
@@ -40,8 +42,10 @@ class MovieDataSource (private val apiService : TMDBInterface, private val compo
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         networkState.postValue(NetworkState.LOADING)
 
+        val response1 = if(query!=null) apiService.searchMovie(query,params.key) else apiService.getPopularMovie(params.key)
+
         compositeDisposable.add(
-            apiService.getPopularMovie(params.key)
+            response1
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
