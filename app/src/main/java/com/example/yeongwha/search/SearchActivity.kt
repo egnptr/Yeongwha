@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.yeongwha.R
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
-import com.example.yeongwha.popular_movie.MainActivity
+import com.example.yeongwha.popular_movie.MovieActivity
 import com.example.yeongwha.popular_movie.MainActivityViewModel
 import com.example.yeongwha.popular_movie.MoviePageListRepository
 import com.example.yeongwha.popular_movie.PageListAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         imageButtonBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MovieActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -65,9 +64,9 @@ class SearchActivity : AppCompatActivity() {
             }
         };
 
-        rv_movie_list.layoutManager = gridLayoutManager
-        rv_movie_list.setHasFixedSize(true)
-        rv_movie_list.adapter = movieAdapter
+        rv_search.layoutManager = gridLayoutManager
+        rv_search.setHasFixedSize(true)
+        rv_search.adapter = movieAdapter
 
         viewModel.searchPagedList.observe(this, Observer {
             movieAdapter.submitList(it)

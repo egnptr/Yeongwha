@@ -14,9 +14,9 @@ import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.search.SearchActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_movie.*
 
-class MainActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainActivityViewModel
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movie)
 
         val apiService : TMDBInterface = TMDBClient.getClient()
 
