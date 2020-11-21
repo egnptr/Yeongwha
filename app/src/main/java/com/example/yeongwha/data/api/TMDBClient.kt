@@ -1,5 +1,6 @@
 package com.example.yeongwha.data.api
 
+import com.example.yeongwha.data.local.FavoriteMovieDatabase
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

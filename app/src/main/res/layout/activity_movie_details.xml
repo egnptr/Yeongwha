@@ -37,7 +37,6 @@
                 android:orientation="vertical"
                 android:id="@+id/linearLayout">
 
-
                 <ImageView
                     android:id="@+id/iv_movie_poster"
                     android:layout_width="match_parent"
@@ -45,6 +44,17 @@
                     android:layout_gravity="center"
                     android:scaleType="matrix"
                     android:src="@drawable/poster_placeholder"/>
+
+                    <ToggleButton
+                        android:id="@+id/toggle_favorite"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="350dp"
+                        android:background="@drawable/favorite_toggle"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textOff=""
+                        android:textOn="" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

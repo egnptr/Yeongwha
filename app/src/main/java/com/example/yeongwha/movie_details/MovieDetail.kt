@@ -1,5 +1,6 @@
 package com.example.yeongwha.movie_details
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,9 +12,14 @@ import com.example.yeongwha.R
 import com.example.yeongwha.data.api.POSTER_BASE_URL
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
+import com.example.yeongwha.data.local.FavoriteMovieRepository
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.MovieDetails
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.NumberFormat
 import java.util.*
 
@@ -21,12 +27,17 @@ class MovieDetail : AppCompatActivity() {
 
     private lateinit var viewModel: ViewModel
     private lateinit var movieRepository: MovieDetailsRepository
+    private lateinit var favRepository: FavoriteMovieRepository
+    private lateinit var movie : MovieDetails
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
         val movieId: Int = intent.getIntExtra("id",1)
+        movie  = intent.extras
+
 
         val apiService : TMDBInterface = TMDBClient.getClient()
         movieRepository = MovieDetailsRepository(apiService)
@@ -42,9 +53,36 @@ class MovieDetail : AppCompatActivity() {
             txt_error.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
 
         })
+
+        var _isChecked = false
+        CoroutineScope(Dispatchers.IO).launch{
+            val count = viewModel.checkMovie(favRepository, movieId)
+            withContext(Dispatchers.Main){
+                if (count > 0){
+                    toggle_favorite.isChecked = true
+                    _isChecked = true
+                }else{
+                    toggle_favorite.isChecked = false
+                    _isChecked = false
+                }
+            }
+        }
+
+        toggle_favorite.setOnClickListener {
+            _isChecked = !_isChecked
+            if (_isChecked){
+                viewModel.addToFavorite(
+                    favRepository,
+                    movie
+                )
+            } else{
+                viewModel.removeFromFavorite(favRepository, movieId)
+            }
+            toggle_favorite.isChecked = _isChecked
+        }
     }
 
-    fun bindUI( it: MovieDetails){
+    fun bindUI(it: MovieDetails){
         movie_title.text = it.title
         movie_release_date.text = it.releaseDate
         movie_rating.text = it.rating.toString()

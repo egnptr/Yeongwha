@@ -2,6 +2,7 @@ package com.example.yeongwha.movie_details
 
 import androidx.lifecycle.LiveData
 import com.example.yeongwha.data.api.TMDBInterface
+import com.example.yeongwha.data.local.FavoriteMovieDao
 import com.example.yeongwha.data.repository.DataSources
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.MovieDetails
