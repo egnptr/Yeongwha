@@ -1,9 +1,8 @@
-package com.example.yeongwha.popular_movie
+package com.example.yeongwha.favorite
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,23 +11,35 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.yeongwha.R
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
-import com.example.yeongwha.data.repository.NetworkState
-import com.example.yeongwha.favorite.FavoriteActivity
-import com.example.yeongwha.search.SearchActivity
-import kotlinx.android.synthetic.main.activity_movie.*
+import com.example.yeongwha.popular_movie.MainActivityViewModel
+import com.example.yeongwha.popular_movie.MovieActivity
+import com.example.yeongwha.popular_movie.MoviePageListRepository
+import com.example.yeongwha.popular_movie.PageListAdapter
+import kotlinx.android.synthetic.main.activity_favorite.*
+import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search.imageButtonBack
 
-class MovieActivity : AppCompatActivity() {
+class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainActivityViewModel
-
     lateinit var movieRepository: MoviePageListRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie)
+        setContentView(R.layout.activity_favorite)
 
+        imageButtonBack.setOnClickListener {
+            val intent = Intent(this, MovieActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        showMovie()
+
+    }
+
+    private fun showMovie() {
         val apiService : TMDBInterface = TMDBClient.getClient()
-
         movieRepository = MoviePageListRepository(apiService)
 
         viewModel = getViewModel()
@@ -45,36 +56,13 @@ class MovieActivity : AppCompatActivity() {
             }
         };
 
-        rv_movie_list.layoutManager = gridLayoutManager
-        rv_movie_list.setHasFixedSize(true)
-        rv_movie_list.adapter = movieAdapter
+        rv_favorite.layoutManager = gridLayoutManager
+        rv_favorite.setHasFixedSize(true)
+        rv_favorite.adapter = movieAdapter
 
         viewModel.moviePagedList.observe(this, Observer {
             movieAdapter.submitList(it)
         })
-
-        viewModel.networkState.observe(this, Observer {
-            progress_bar_popular.visibility = if (viewModel.listIsEmpty() && it == NetworkState.LOADING) View.VISIBLE else View.GONE
-            txt_error_popular.visibility = if (viewModel.listIsEmpty() && it == NetworkState.ERROR) View.VISIBLE else View.GONE
-
-            if (!viewModel.listIsEmpty()) {
-                movieAdapter.setNetworkState(it)
-            }
-        })
-
-        imageButtonSearch.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        imageButtonFav.setOnClickListener {
-            val intent = Intent(this, FavoriteActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-
     }
 
     private fun getViewModel(): MainActivityViewModel {
@@ -85,5 +73,4 @@ class MovieActivity : AppCompatActivity() {
             }
         })[MainActivityViewModel::class.java]
     }
-
 }

@@ -64,17 +64,18 @@
                         android:layout_height="50dp"
                         android:focusableInTouchMode="true">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageViewLogo"
+                        <ImageButton
+                            android:id="@+id/imageButtonFav"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_marginStart="8dp"
-                            android:padding="13dp"
+                            android:padding="8dp"
                             android:src="@drawable/yeonghwa_logo"
+                            android:scaleType="fitCenter"
+                            android:background="?attr/selectableItemBackgroundBorderless"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/white" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/textViewTitle"
@@ -85,7 +86,7 @@
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/imageButtonSearch"
-                            app:layout_constraintStart_toEndOf="@id/imageViewLogo"
+                            app:layout_constraintStart_toEndOf="@+id/imageButtonFav"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageButton
