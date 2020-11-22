@@ -1,6 +1,5 @@
 package com.example.yeongwha.movie_details
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,21 +22,18 @@ import kotlinx.coroutines.withContext
 import java.text.NumberFormat
 import java.util.*
 
-class MovieDetail : AppCompatActivity() {
+class MovieDetailActivity: AppCompatActivity() {
 
     private lateinit var viewModel: ViewModel
     private lateinit var movieRepository: MovieDetailsRepository
     private lateinit var favRepository: FavoriteMovieRepository
-    private lateinit var movie : MovieDetails
-
+    private lateinit var movie: MovieDetails
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
         val movieId: Int = intent.getIntExtra("id",1)
-        movie  = intent.extras
-
 
         val apiService : TMDBInterface = TMDBClient.getClient()
         movieRepository = MovieDetailsRepository(apiService)
@@ -56,7 +52,7 @@ class MovieDetail : AppCompatActivity() {
 
         var _isChecked = false
         CoroutineScope(Dispatchers.IO).launch{
-            val count = viewModel.checkMovie(favRepository, movieId)
+            val count = viewModel.checkMovie(favRepository, movie.id)
             withContext(Dispatchers.Main){
                 if (count > 0){
                     toggle_favorite.isChecked = true
@@ -76,7 +72,7 @@ class MovieDetail : AppCompatActivity() {
                     movie
                 )
             } else{
-                viewModel.removeFromFavorite(favRepository, movieId)
+                viewModel.removeFromFavorite(favRepository, movie.id)
             }
             toggle_favorite.isChecked = _isChecked
         }
@@ -97,7 +93,6 @@ class MovieDetail : AppCompatActivity() {
         Glide.with(this)
             .load(moviePosterURL)
             .into(iv_movie_poster);
-
     }
 
     private fun getViewModel(movieId:Int): ViewModel {

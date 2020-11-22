@@ -16,7 +16,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".search.SearchActivity" />
         <activity android:name=".popular_movie.MovieActivity" />
-        <activity android:name=".movie_details.MovieDetail" />
+        <activity android:name=".movie_details.MovieDetailActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,7 +13,7 @@ import com.example.yeongwha.R
 import com.example.yeongwha.data.api.POSTER_BASE_URL
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.Movie
-import com.example.yeongwha.movie_details.MovieDetail
+import com.example.yeongwha.movie_details.MovieDetailActivity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.network_state.view.*
 
@@ -86,7 +86,7 @@ class PageListAdapter (public val context: Context) : PagedListAdapter<Movie, Re
                 .into(itemView.cv_iv_movie_poster);
 
             itemView.setOnClickListener{
-                val intent = Intent(context, MovieDetail::class.java)
+                val intent = Intent(context, MovieDetailActivity::class.java)
                 intent.putExtra("id", movie?.id)
                 context.startActivity(intent)
             }

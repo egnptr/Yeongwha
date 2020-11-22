@@ -16,8 +16,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/yeonghwa_logo"
-        tools:layout_editor_absoluteY="80dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="137dp" />
 
     <ScrollView
         android:layout_width="match_parent"

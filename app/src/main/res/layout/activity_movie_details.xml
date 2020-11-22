@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".movie_details.MovieDetail">
+    tools:context=".movie_details.MovieDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                         android:id="@+id/toggle_favorite"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="350dp"
+                        android:layout_gravity="center"
                         android:background="@drawable/favorite_toggle"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
