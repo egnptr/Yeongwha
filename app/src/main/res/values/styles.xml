@@ -18,7 +18,6 @@
         <item name="searchIcon">@null</item>
         <item name="searchHintIcon">@drawable/ic_baseline_search_24</item>
         <item name="iconifiedByDefault">false</item>
-        <item name="android:editTextColor">@android:color/white</item>
         <item name="editTextBackground">@android:color/transparent</item>
         <item name="queryBackground">@android:color/transparent</item>
         <item name="android:queryBackground">@android:color/transparent</item>
