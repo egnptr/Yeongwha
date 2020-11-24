@@ -7,8 +7,7 @@
     tools:context=".search.SearchActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorHelper"
-    android:transitionName="@string/transition_from_home_to_search">
+    android:background="@color/colorHelper">
 
     <ImageButton
         android:id="@+id/imageButtonBack"

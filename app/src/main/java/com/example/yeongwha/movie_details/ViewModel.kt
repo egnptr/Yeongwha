@@ -3,7 +3,6 @@ package com.example.yeongwha.movie_details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.yeongwha.data.local.FavoriteMovie
-import com.example.yeongwha.data.local.FavoriteMovieRepository
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
@@ -29,9 +28,9 @@ class ViewModel (private val movieRepository : MovieDetailsRepository, movieId: 
     }
 
 
-    fun addToFavorite(repository: FavoriteMovieRepository, movieDetails: MovieDetails){
+    fun addToFavorite(movieDetails: MovieDetails){
         CoroutineScope(Dispatchers.IO).launch {
-            repository.addToFavorite(
+            movieRepository.addToFavorite(
                 FavoriteMovie(
                     movieDetails.id,
                     movieDetails.posterPath,
@@ -42,11 +41,11 @@ class ViewModel (private val movieRepository : MovieDetailsRepository, movieId: 
         }
     }
 
-    suspend fun checkMovie(repository: FavoriteMovieRepository, id: Int) = repository.checkMovie(id)
+    suspend fun checkMovie(id: Int) = movieRepository.checkMovie(id)
 
-    fun removeFromFavorite(repository: FavoriteMovieRepository, id: Int){
+    fun removeFromFavorite(id: Int){
         CoroutineScope(Dispatchers.IO).launch {
-            repository.removeFromFavorite(id)
+            movieRepository.removeFromFavorite(id)
         }
     }
 

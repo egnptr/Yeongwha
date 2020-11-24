@@ -11,7 +11,6 @@ import com.example.yeongwha.R
 import com.example.yeongwha.data.api.POSTER_BASE_URL
 import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
-import com.example.yeongwha.data.local.FavoriteMovieRepository
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.data.value_object.MovieDetails
 import kotlinx.android.synthetic.main.activity_movie_details.*
@@ -26,7 +25,6 @@ class MovieDetailActivity: AppCompatActivity() {
 
     private lateinit var viewModel: ViewModel
     private lateinit var movieRepository: MovieDetailsRepository
-    private lateinit var favRepository: FavoriteMovieRepository
     private lateinit var movie: MovieDetails
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +50,7 @@ class MovieDetailActivity: AppCompatActivity() {
 
 //        var _isChecked = false
 //        CoroutineScope(Dispatchers.IO).launch{
-//            val count = viewModel.checkMovie(favRepository, movie.id)
+//            val count = viewModel.checkMovie(movie.id)
 //            withContext(Dispatchers.Main){
 //                if (count > 0){
 //                    toggle_favorite.isChecked = true
@@ -67,12 +65,9 @@ class MovieDetailActivity: AppCompatActivity() {
 //        toggle_favorite.setOnClickListener {
 //            _isChecked = !_isChecked
 //            if (_isChecked){
-//                viewModel.addToFavorite(
-//                    favRepository,
-//                    movie
-//                )
+//                viewModel.addToFavorite(movie)
 //            } else{
-//                viewModel.removeFromFavorite(favRepository, movie.id)
+//                viewModel.removeFromFavorite(movie.id)
 //            }
 //            toggle_favorite.isChecked = _isChecked
 //        }

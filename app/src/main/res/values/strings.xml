@@ -27,4 +27,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="yeo_info">Yeonghwa is an application that we will create with the theme of a mobile-based movie directory. This application is inspired by the IMDb website, which is also a movie directory. This application was created with the aim of helping users browse existing and upcoming films.</string>
+    <string name="support">Have questions or feedback about Yeongwha? Please see contact our support and feedback email for guidance about the ways you can receive support and provide feedback.</string>
 </resources>

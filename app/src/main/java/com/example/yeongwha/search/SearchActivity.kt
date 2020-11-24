@@ -33,16 +33,13 @@ class SearchActivity : AppCompatActivity() {
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
-
             override fun onQueryTextSubmit(query: String): Boolean {
                 showMovie(query)
                 return false
             }
-
         })
     }
 

@@ -83,8 +83,8 @@
                             android:padding="8dp"
                             android:src="@drawable/yeonghwa_logo"
                             android:scaleType="fitCenter"
-                            android:tooltipText="Favorite"
                             android:background="?attr/selectableItemBackgroundBorderless"
+                            android:tooltipText="Favorite"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -108,8 +108,8 @@
                             android:layout_marginEnd="8dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="8dp"
-                            android:tooltipText="Search Movie"
                             android:src="@drawable/ic_baseline_search_24"
+                            android:tooltipText="Search"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

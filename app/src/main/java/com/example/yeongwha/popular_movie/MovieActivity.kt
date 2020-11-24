@@ -14,6 +14,7 @@ import com.example.yeongwha.data.api.TMDBClient
 import com.example.yeongwha.data.api.TMDBInterface
 import com.example.yeongwha.data.repository.NetworkState
 import com.example.yeongwha.favorite.FavoriteActivity
+import com.example.yeongwha.favorite.HelpActivity
 import com.example.yeongwha.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_movie.*
 
@@ -64,6 +65,12 @@ class MovieActivity : AppCompatActivity() {
 
         imageButtonSearch.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        imageButtonHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
             startActivity(intent)
             finish()
         }
