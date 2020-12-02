@@ -48,29 +48,29 @@ class MovieDetailActivity: AppCompatActivity() {
 
         })
 
-//        var _isChecked = false
-//        CoroutineScope(Dispatchers.IO).launch{
-//            val count = viewModel.checkMovie(movie.id)
-//            withContext(Dispatchers.Main){
-//                if (count > 0){
-//                    toggle_favorite.isChecked = true
-//                    _isChecked = true
-//                }else{
-//                    toggle_favorite.isChecked = false
-//                    _isChecked = false
-//                }
-//            }
-//        }
-//
-//        toggle_favorite.setOnClickListener {
-//            _isChecked = !_isChecked
-//            if (_isChecked){
-//                viewModel.addToFavorite(movie)
-//            } else{
-//                viewModel.removeFromFavorite(movie.id)
-//            }
-//            toggle_favorite.isChecked = _isChecked
-//        }
+        var _isChecked = false
+        CoroutineScope(Dispatchers.IO).launch{
+            val count = viewModel.checkMovie(movie.id)
+            withContext(Dispatchers.Main){
+                if (count > 0){
+                    toggle_favorite.isChecked = true
+                    _isChecked = true
+                }else{
+                    toggle_favorite.isChecked = false
+                    _isChecked = false
+                }
+            }
+        }
+
+        toggle_favorite.setOnClickListener {
+            _isChecked = !_isChecked
+            if (_isChecked){
+                viewModel.addToFavorite(movie)
+            } else{
+                viewModel.removeFromFavorite(movie.id)
+            }
+            toggle_favorite.isChecked = _isChecked
+        }
     }
 
     fun bindUI(it: MovieDetails){
